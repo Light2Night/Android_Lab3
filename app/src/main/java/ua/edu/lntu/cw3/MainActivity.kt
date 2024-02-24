@@ -31,13 +31,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Body()
+            Body(DataSource())
         }
     }
 }
 
-@Composable
-fun Body() {
+class DataSource {
     val items = listOf(
         "Bread",
         "Cheese",
@@ -55,13 +54,16 @@ fun Body() {
         "Item 10",
         "Item 11",
         "Item 12"
-    );
+    )
+}
 
+@Composable
+fun Body(dataSource: DataSource) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        itemsIndexed(items) { index, item ->
+        itemsIndexed(dataSource.items) { index, item ->
             ColumnListItem(index, item)
         }
     }
@@ -104,5 +106,5 @@ fun ColumnListItem(rowIndex: Int, text: String) {
 @Preview(showBackground = true)
 @Composable
 fun BodyPreview() {
-    Body()
+    Body(DataSource())
 }
