@@ -95,8 +95,8 @@ fun ColumnListItem(rowIndex: Int, text: String) {
         )
 
         Text(
-            text = "Text abcd",
-            style = MaterialTheme.typography.titleSmall
+            text = "Item index ${rowIndex}",
+            style = MaterialTheme.typography.bodyLarge
         )
     }
 }
