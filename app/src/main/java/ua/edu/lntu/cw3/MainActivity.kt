@@ -1,19 +1,18 @@
 package ua.edu.lntu.cw3
 
 import android.os.Bundle
-import android.widget.ScrollView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import ua.edu.lntu.cw3.ui.theme.IPZ_CR_3Theme
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,11 +25,29 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Body() {
+    val items = listOf("1", "sdg", "sdfsd", "sd");
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
     ) {
+        itemsIndexed(items) { index, item ->
+            ColumnListItem(items, index)
+        }
+    }
+}
 
+@Composable
+fun ColumnListItem(items: List<String>, rowIndex: Int) {
+    items.slice(rowIndex until rowIndex + 2).forEach { item ->
+        Column(
+            modifier = Modifier
+                .padding(4.dp)
+        ) {
+            Text(
+                text = item
+            )
+        }
     }
 }
 
