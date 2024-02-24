@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -32,22 +33,20 @@ fun Body() {
             .fillMaxSize()
     ) {
         itemsIndexed(items) { index, item ->
-            ColumnListItem(items, index)
+            ColumnListItem(index, item)
         }
     }
 }
 
 @Composable
-fun ColumnListItem(items: List<String>, rowIndex: Int) {
-    items.slice(rowIndex until rowIndex + 2).forEach { item ->
-        Column(
-            modifier = Modifier
-                .padding(4.dp)
-        ) {
-            Text(
-                text = item
-            )
-        }
+fun ColumnListItem(rowIndex: Int, text: String) {
+    Row(
+        modifier = Modifier
+            .padding(4.dp)
+    ) {
+        Text(
+            text = text
+        )
     }
 }
 
