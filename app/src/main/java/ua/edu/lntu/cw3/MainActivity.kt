@@ -1,9 +1,12 @@
 package ua.edu.lntu.cw3
 
 import android.os.Bundle
+import android.widget.ScrollView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -23,27 +26,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Body() {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
 
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun BodyPreview() {
     Body()
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    IPZ_CR_3Theme {
-        Greeting("Android")
-    }
 }
